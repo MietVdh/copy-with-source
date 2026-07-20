@@ -8,7 +8,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const commonOptions = {
   entryPoints: {
     background: 'src/background/background.js',
-    content: 'src/content/content.js'},
+    content: 'src/content/content.js',
+    'options/options': 'options/options.js'},
   bundle: true,
   minify: isProd,
   sourcemap: !isProd,
@@ -31,9 +32,14 @@ async function buildBrowser(browser, target) {
         `dist/${browser}/manifest.json`
     );
 
+    fs.cpSync('./options', `dist/${browser}/options`, {
+    recursive: true,
+    filter: (src) => path.basename(src) !== 'options.js',
+    });
+
     fs.mkdirSync(`dist/${browser}/`, { recursive: true });
     fs.cpSync('./icons', `dist/${browser}/icons`, { recursive: true });
-    fs.cpSync('./options', `dist/${browser}/options`, { recursive: true });
+    // fs.cpSync('./options', `dist/${browser}/options`, { recursive: true });
 
 }
 
