@@ -1,4 +1,13 @@
-// toolbar, commands, context menu
+import {
+    MENU_ITEMS,
+    CONTEXTS,
+    STORAGE_KEYS,
+    DEFAULT_OPTIONS,
+    MESSAGE_TYPES,
+    COMMANDS
+} from "../shared/constants";
+import retrieveOptions from "../background/storage";
+import browser from "webextension-polyfill";
 
 if (DEBUG) console.log("Background script running");
 
@@ -62,7 +71,7 @@ browser.action.onClicked.addListener((tab) => {
 
 
 const selectInfoAndSend = async(info, tab) => {
-    await retrieveOptions();
+    const options = await retrieveOptions();
     // Get preferences
     if (DEBUG) { console.log(options); }
     const { useHeading, addDate } = options;

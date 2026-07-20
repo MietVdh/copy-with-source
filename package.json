@@ -1,0 +1,16 @@
+{
+  "name": "copy-with-source",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node build.js --watch",
+    "build": "node build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "esbuild": "^0.28.1",
+    "webextension-polyfill": "^0.12.0"
+  }
+}

@@ -1,3 +1,5 @@
+import browser from "webextension-polyfill";
+
 const options = {}
 const optionsForm = document.getElementById("optionsForm");
 

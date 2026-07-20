@@ -1,6 +1,5 @@
-// getSelectionFragment(), determineTitle()
 
-const getSelectionFragment = () => {
+export const getSelectionFragment = () => {
     const selection = window.getSelection();
 
     const range =
@@ -18,7 +17,7 @@ const getSelectionFragment = () => {
 }
 
 
-const determineTitle = (useHeading, pageTitle) => {
+export const determineTitle = (useHeading, pageTitle) => {
     const h1 = document.querySelector("h1");
     const title =
         useHeading && h1

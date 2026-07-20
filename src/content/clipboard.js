@@ -1,6 +1,6 @@
-// buildClipboardHtml(), sendToClipboard()
+import { CLIPBOARD_TYPES } from "../shared/constants";
 
-const createClipboardElement = (title, url, addDate, fragment, hostname) => {
+export const createClipboardElement = (title, url, addDate, fragment, hostname) => {
     const fragmentCopy = fragment.cloneNode(true);
 
     const div = document.createElement('div');
@@ -48,7 +48,7 @@ const createClipboardElement = (title, url, addDate, fragment, hostname) => {
 }
 
 
-const sendToClipboard = async(element) => {
+export const sendToClipboard = async(element) => {
 
     const html = element.outerHTML;
     const text = element.innerText;

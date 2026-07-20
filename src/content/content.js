@@ -1,9 +1,14 @@
-// receives messages
+import { MESSAGE_TYPES } from "../shared/constants";
+import { getSelectionFragment, determineTitle } from "./selection";
+import { createClipboardElement, sendToClipboard } from "./clipboard";
+import browser from "webextension-polyfill";
 
 if (DEBUG) console.log("Content script running");
 
+console.log("Registering message listener");
 browser.runtime.onMessage.addListener(
     (request) => {
+        console.log("Received message:", request);
         if (request.type === MESSAGE_TYPES.COPY_HYPERLINK) {
             return copyHyperlink(request);
         }

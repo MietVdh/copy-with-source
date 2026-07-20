@@ -1,39 +1,38 @@
-// DEBUG, option names, message types
 
-const DEBUG = true;
+// export const DEBUG = true;
 
-const CONTEXTS = {
+export const CONTEXTS = {
     ALL: "all",
 };
 
 
-const MESSAGE_TYPES = {
+export const MESSAGE_TYPES = {
     COPY_HYPERLINK: "textToCopy"
 };
 
 
-const STORAGE_KEYS = {
+export const STORAGE_KEYS = {
     OPTIONS: "options",
 };
 
 
-const DEFAULT_OPTIONS = {
+export const DEFAULT_OPTIONS = {
     addDate: false,
     useHeading: true
 };
 
 
-const MENU_ITEMS = {
+export const MENU_ITEMS = {
     COPY_HYPERLINK : "copy-hyperlink"
 };
 
 
-const COMMANDS = {
+export const COMMANDS = {
     COPY_HYPERLINK: 'copy-selection-hyperlink'
 };
 
 
-const CLIPBOARD_TYPES = {
+export const CLIPBOARD_TYPES = {
     HTML: "text/html",
     PLAIN_TEXT: "text/plain"
 };

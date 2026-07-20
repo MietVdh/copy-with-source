@@ -1,8 +1,9 @@
-// retrieveOptions(), default options
+import { DEFAULT_OPTIONS, STORAGE_KEYS } from "../shared/constants";
+import browser from "webextension-polyfill";
 
 const options = structuredClone(DEFAULT_OPTIONS);
 
-async function retrieveOptions() {
+export default async function retrieveOptions() {
     const data = await browser.storage.sync.get(STORAGE_KEYS.OPTIONS);
 
     Object.assign(

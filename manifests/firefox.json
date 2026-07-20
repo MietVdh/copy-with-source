@@ -5,9 +5,7 @@
     "description": "Copy selected text together with a clickable link back to the original web page. Optionally use the page heading as the link text and include the current date, making it easy to keep track of where your notes, quotes, and research came from.",
     "background": {
         "scripts": [
-          "scripts/constants.js",
-          "scripts/storage.js",
-          "scripts/background.js"
+          "./background.js"
         ]
         },
     "permissions": [
@@ -15,22 +13,19 @@
         "storage"
       ],
     "icons": {
-    "32": "icons/icon-32.png",
-    "128": "icons/icon-128.png"
+    "32": "./icons/icon-32.png",
+    "128": "./icons/icon-128.png"
     },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
             "js": [
-              "scripts/constants.js",
-              "scripts/selection.js",
-              "scripts/clipboard.js",
-              "scripts/content.js"
+              "./content.js"
             ]
         }
         ],
     "options_ui": {
-        "page": "options/options.html",
+        "page": "./options/options.html",
         "open_in_tab": false
         },
     "action": {
@@ -39,8 +34,8 @@
     "commands": {
         "copy-selection-hyperlink": {
           "suggested_key": {
-            "default": "Ctrl+Alt+H",
-            "mac": "Command+Alt+H"
+            "default": "Shift+Alt+H",
+            "mac": "Shift+Alt+H"
             },
           "description": "Copy the selected text with hyperlink"
         }
