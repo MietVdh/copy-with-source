@@ -7,7 +7,8 @@ export const CONTEXTS = {
 
 
 export const MESSAGE_TYPES = {
-    COPY_HYPERLINK: "textToCopy"
+    COPY_HYPERLINK: "textToCopy",
+    COPY_HYPERLINK_ONLY: "copyHyperlink"
 };
 
 

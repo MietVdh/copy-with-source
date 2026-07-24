@@ -9,7 +9,8 @@ const commonOptions = {
   entryPoints: {
     background: 'src/background/background.js',
     content: 'src/content/content.js',
-    'options/options': 'options/options.js'},
+    'options/options': 'options/options.js',
+    'popup/popup': 'src/popup/popup.js'},
   bundle: true,
   minify: isProd,
   sourcemap: !isProd,
@@ -30,6 +31,11 @@ async function buildBrowser(browser, target) {
     fs.copyFileSync(
         `manifests/${browser}.json`,
         `dist/${browser}/manifest.json`
+    );
+
+    fs.copyFileSync(
+        `src/popup/popup.html`,
+        `dist/${browser}/popup/popup.html`
     );
 
     fs.cpSync('./options', `dist/${browser}/options`, {

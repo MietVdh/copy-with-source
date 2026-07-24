@@ -1,3 +1,4 @@
+import browser from "webextension-polyfill";
 import {
     MENU_ITEMS,
     CONTEXTS,
@@ -7,7 +8,7 @@ import {
     COMMANDS
 } from "../shared/constants";
 import retrieveOptions from "../background/storage";
-import browser from "webextension-polyfill";
+
 
 if (DEBUG) console.log("Background script running");
 
@@ -29,26 +30,16 @@ browser.runtime.onInstalled.addListener(() => {
 // Listener for context menu
 browser.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === MENU_ITEMS.COPY_HYPERLINK) {
+        if (DEBUG) console.log("Context menu clicked");
         selectInfoAndSend(info, tab);
     }
 });
 
 
-
-browser.runtime.onMessage.addListener(async (request) => {
-    if (DEBUG) {console.log("Received:", request);}
-
-    if (request.type !== MESSAGE_TYPES.COPY_HYPERLINK) {
-        return;
-    }
-
-    await copyHyperlink(request);
-});
-
-
 // Listener for shortcut command
 browser.commands.onCommand.addListener( async (command) => {
-    if (DEBUG) { console.log(command); }
+    if (DEBUG) console.log(command);
+    if (DEBUG) console.log("Shortcut used");
 
     if (command !== COMMANDS.COPY_HYPERLINK) {
         return;
@@ -65,26 +56,63 @@ browser.commands.onCommand.addListener( async (command) => {
 
 // Listener for toolbar icon
 browser.action.onClicked.addListener((tab) => {
-    selectInfoAndSend(null, tab);
+    if (DEBUG) console.log("Toolbar icon clicked");
+    // popup.html opens; popup.js runs
 });
 
 
+// const selectInfo = async(info, tab) => {
+//     // Get preferences
+//     const options = await retrieveOptions();
+//     const { useHeading, addDate } = options;
+
+//     const url = tab.url;
+//     const title = tab.title;
+
+//     return { url, title, useHeading, addDate };
+// }
+
 
 const selectInfoAndSend = async(info, tab) => {
-    const options = await retrieveOptions();
     // Get preferences
-    if (DEBUG) { console.log(options); }
+    const options = await retrieveOptions();
     const { useHeading, addDate } = options;
 
     const url = tab.url;
     const title = tab.title;
 
-    // Sending a message
-    browser.tabs.sendMessage(tab.id, {
-        type: MESSAGE_TYPES.COPY_HYPERLINK,
-        url: url,
-        title: title,
-        addDate: addDate,
-        useHeading: useHeading
+    try {
+
+        browser.tabs.sendMessage(tab.id, {
+            type: MESSAGE_TYPES.COPY_HYPERLINK,
+            url: url,
+            title: title,
+            addDate: addDate,
+            useHeading: useHeading
         });
+
+    } catch (err) {
+        console.error(err);
+    }
 }
+
+// const selectLinkAndSend = async (tab) => {
+//     // Get preferences
+//     const options = await retrieveOptions();
+//     const { useHeading, addDate } = options;
+
+//     const url = tab.url;
+//     const title = tab.title;
+
+//     try {
+//         browser.tabs.sendMessage(tab.id, {
+//             type: MESSAGE_TYPES.COPY_HYPERLINK_ONLY,
+//             url: url,
+//             title: title,
+//             addDate: addDate,
+//             useHeading: useHeading
+//         });
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }

@@ -10,7 +10,9 @@
         },
     "permissions": [
         "contextMenus",
-        "storage"
+        "storage",
+        "activeTab",
+        "clipboardWrite"
       ],
     "icons": {
     "32": "./icons/icon-32.png",
@@ -29,13 +31,13 @@
         "open_in_tab": false
         },
     "action": {
-        "default_title": "Click to copy hyperlink"
+        "default_title": "Copy with source",
+        "default_popup": "./popup/popup.html"
     },
     "commands": {
         "copy-selection-hyperlink": {
           "suggested_key": {
-            "default": "Shift+Alt+H",
-            "mac": "Shift+Alt+H"
+            "default": "Shift+Alt+Q"
             },
           "description": "Copy the selected text with hyperlink"
         }

@@ -1,43 +1,67 @@
+import browser from "webextension-polyfill";
 import { MESSAGE_TYPES } from "../shared/constants";
 import { getSelectionFragment, determineTitle } from "./selection";
-import { createClipboardElement, sendToClipboard } from "./clipboard";
-import browser from "webextension-polyfill";
+import { createClipboardHTMLElement, createClipboardMarkdownElement, sendToClipboard } from "../shared/clipboard";
+
 
 if (DEBUG) console.log("Content script running");
 
 console.log("Registering message listener");
 browser.runtime.onMessage.addListener(
     (request) => {
-        console.log("Received message:", request);
-        if (request.type === MESSAGE_TYPES.COPY_HYPERLINK) {
-            return copyHyperlink(request);
+        if (request.type !== MESSAGE_TYPES.COPY_HYPERLINK) {
+            return;
+        }
+
+        try {
+            return copySelectionAndHyperlink(request);
+        } catch (err) {
+            console.error(err);
+        }
+
+    }
+);
+
+
+browser.runtime.onMessage.addListener(
+    (request) => {
+        if (request.type !== MESSAGE_TYPES.COPY_HYPERLINK_ONLY) {
+            return;
+        }
+        try {
+            return copySelectionAndHyperlink(request);
+        } catch (err) {
+            console.error(err);
         }
     }
 );
 
 
-const copyHyperlink = async (request) => {
+const copySelectionAndHyperlink = async (request) => {
     const { url, title, addDate, useHeading } = request;
     const finalTitle = determineTitle(useHeading, title);
     const fragment = getSelectionFragment();
     const siteDomain = window.location.hostname;
 
-    if (DEBUG) {
-        console.log("Use heading: ", useHeading);
-        console.log("Add date: ", addDate);
-        console.log("Fragment: ");
-        console.log(fragment);
-        console.log("hostname: ", siteDomain);
-    }
-
-    const element = createClipboardElement(
+    const htmlElement = createClipboardHTMLElement(
         finalTitle,
         url,
         addDate,
         fragment,
         siteDomain);
 
-    await sendToClipboard(element);
+    const markdownElement = createClipboardMarkdownElement(
+        finalTitle,
+        url,
+        addDate,
+        fragment,
+        siteDomain);
+
+    try {
+        await sendToClipboard(htmlElement, markdownElement);
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 
