@@ -2,7 +2,7 @@ import browser from "webextension-polyfill";
 import { MESSAGE_TYPES } from "../shared/constants";
 import { getSelectionFragment, determineTitle } from "./selection";
 import { createClipboardHTMLElement, createClipboardMarkdownElement, sendToClipboard } from "../shared/clipboard";
-
+import toast from "./toast";
 
 if (DEBUG) console.log("Content script running");
 
@@ -59,8 +59,10 @@ const copySelectionAndHyperlink = async (request) => {
 
     try {
         await sendToClipboard(htmlElement, markdownElement);
+        showToast("Copied!");
     } catch (err) {
         console.error(err);
+        showToast("Couldn't copy");
     }
 }
 
