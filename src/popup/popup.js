@@ -21,6 +21,8 @@ const copyLinkToClipboard = async () => {
         const html = buildLinkHtml(title, tab.url, options.addDate);
         const markdown = buildLinkMarkdown(title, tab.url, options.addDate);
 
+        if (DEBUG) console.log(document.hasFocus());
+
         await navigator.clipboard.write([
             new ClipboardItem({
                 [CLIPBOARD_TYPES.HTML]: new Blob(
@@ -42,4 +44,13 @@ const copyLinkToClipboard = async () => {
     }
 }
 
-copyLinkToClipboard();
+
+window.addEventListener("DOMContentLoaded", async () => {
+    if (!document.hasFocus()) {
+        await new Promise(resolve => {
+            window.addEventListener("focus", resolve, { once: true });
+        });
+    }
+
+    await copyLinkToClipboard();
+});
