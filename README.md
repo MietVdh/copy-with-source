@@ -36,8 +36,19 @@ Current options are:
 - **Add date**: includes the current date after the hyperlink. Off by default.
 - **Use heading when available**: Uses the page's primary heading (\<h1\>) when one is present, instead of the page title (the text shown on the browser tab). On by default.
 
-### Setting Options
+### Changing Extension Options
 
+#### Chrome
+
+* Right-click the extension's toolbar icon and select **Options**.
+* Or open `chrome://extensions`, click **Details** for the extension, then click **Extension options**.
+
+#### Firefox
+
+* Right-click the extension's toolbar icon and select **Manage Extension**, then click **Preferences**.
+* Or open `about:addons`, select **Extensions**, find the extension, click the **⋯** (three-dot) menu, and choose **Preferences**.
+
+Any changes you make are saved automatically.
 
 
 ## Development

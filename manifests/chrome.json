@@ -26,10 +26,10 @@
         ],
     "options_ui": {
         "page": "./options/options.html",
-        "open_in_tab": false
+        "open_in_tab": true
         },
     "action": {
-        "default_title": "Click to copy hyperlink",
+        "default_title": "Copy with source",
         "default_popup": "./popup/popup.html"
     },
     "commands": {
