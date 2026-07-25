@@ -26,7 +26,7 @@ export function buildLinkMarkdown(title, url, addDate) {
     let text = `[${escapeMarkdown(title)}](${url})`;
     if (addDate) {
         const date = new Date().toDateString();
-        text = `${text} - ${date}`;
+        text = `${text} \- ${date}`;
     }
     text = text + '\n';
     return text;
@@ -85,7 +85,7 @@ export const createClipboardMarkdownElement = (title, url, addDate, fragment, ho
     const div = document.createElement('div');
     div.append(fragment);
     let text = div.innerText;
-    text = `${text}\n- ${buildLinkMarkdown(title, url, addDate)}`;
+    text = `${text}\n\- ${buildLinkMarkdown(title, url, addDate)}`;
     return text;
 }
 

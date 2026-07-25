@@ -26,6 +26,9 @@ Right-clicking and selecting "Copy with source" copies the selected text (if any
 #### Shortcut
 Using the shortcut (Alt + Shift + Q) copies the selected text (if any) and a hyperlink to the webpage to the clipboard.
 
+### Confirmation
+When successful, a confirmation message will briefly show, either at the top of the page, by the toolbar icon (if toolbar icon was clicked), or as a toast at the bottom of the page (if context menu or shortcut were used).
+
 ## Installation
 
 TODO
@@ -65,17 +68,20 @@ The build script creates separate Chrome and Firefox builds in `dist/`.
 
 ### Project Structure
 
-#### background.js
+#### background/background.js
 - Handles toolbar, shortcut, and context menu.
 
-#### content.js
-- Extracts the current selection.
+#### content/content.js
+- Extracts the current selection and copies it to the clipboard (when using context menu or shortcut).
 
-#### popup.js
-- Copies source hyperlink when toolbar icon is clicked.
-
-#### selection.js
+#### content/selection.js
 - Selection helper functions.
 
-#### clipboard.js
+#### popup/popup.js
+- Copies source hyperlink when toolbar icon is clicked.
+
+#### shared/clipboard.js
 - Builds HTML/markdown clipboard content.
+
+#### build.js
+- Build the `/dist` folder that contains the bundled code

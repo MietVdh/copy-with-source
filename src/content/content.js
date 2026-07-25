@@ -6,7 +6,6 @@ import toast from "./toast";
 
 if (DEBUG) console.log("Content script running");
 
-console.log("Registering message listener");
 browser.runtime.onMessage.addListener(
     (request) => {
         if (request.type !== MESSAGE_TYPES.COPY_HYPERLINK) {
