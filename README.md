@@ -1,10 +1,12 @@
 # Copy with Source
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
+
 Copy selected text together with a clickable hyperlink back to the original web page. Optionally include the page heading and the current date, making it easy to keep track of sources for notes, research, and writing.
 
-## Screenshots
+[// ## Screenshots ]: #
 
-TODO
+[// TODO ]: #
 
 ## Features
 
@@ -29,9 +31,9 @@ Using the shortcut (Alt + Shift + Q) copies the selected text (if any) and a hyp
 ### Confirmation
 When successful, a confirmation message will briefly show, either at the top of the page, by the toolbar icon (if toolbar icon was clicked), or as a toast at the bottom of the page (if context menu or shortcut were used).
 
-## Installation
+[// ## Installation ]: #
 
-TODO
+[// TODO ]: #
 
 ## Options
 
