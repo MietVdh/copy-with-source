@@ -1,4 +1,4 @@
-# Copy with Source
+# Copy with Source ![Copy with Source icon](/icons/icon-32.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 
@@ -50,10 +50,8 @@ Current options are:
 
 #### Firefox
 
-* Right-click the extension's toolbar icon and select **Manage Extension**, then click **Preferences**.
-* Or open `about:addons`, select **Extensions**, find the extension, click the **⋯** (three-dot) menu, and choose **Preferences**.
-
-Any changes you make are saved automatically.
+* Right-click the extension's toolbar icon and select **Manage Extension**, click the **⋯** (three-dot) menu, and choose **Options**.
+* Or open `about:addons`, select **Extensions**, find the extension, click the **⋯** (three-dot) menu, and choose **Options**.
 
 
 ## Development
@@ -87,3 +85,6 @@ The build script creates separate Chrome and Firefox builds in `dist/`.
 
 #### build.js
 - Build the `/dist` folder that contains the bundled code
+
+## Credits
+[Copy with source icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/copy-link)

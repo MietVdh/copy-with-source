@@ -61,18 +61,6 @@ browser.action.onClicked.addListener((tab) => {
 });
 
 
-// const selectInfo = async(info, tab) => {
-//     // Get preferences
-//     const options = await retrieveOptions();
-//     const { useHeading, addDate } = options;
-
-//     const url = tab.url;
-//     const title = tab.title;
-
-//     return { url, title, useHeading, addDate };
-// }
-
-
 const selectInfoAndSend = async(info, tab) => {
     // Get preferences
     const options = await retrieveOptions();
@@ -95,24 +83,3 @@ const selectInfoAndSend = async(info, tab) => {
         console.error(err);
     }
 }
-
-// const selectLinkAndSend = async (tab) => {
-//     // Get preferences
-//     const options = await retrieveOptions();
-//     const { useHeading, addDate } = options;
-
-//     const url = tab.url;
-//     const title = tab.title;
-
-//     try {
-//         browser.tabs.sendMessage(tab.id, {
-//             type: MESSAGE_TYPES.COPY_HYPERLINK_ONLY,
-//             url: url,
-//             title: title,
-//             addDate: addDate,
-//             useHeading: useHeading
-//         });
-//     } catch (err) {
-//         console.error(err);
-//     }
-// }

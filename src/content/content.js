@@ -17,7 +17,6 @@ browser.runtime.onMessage.addListener(
         } catch (err) {
             console.error(err);
         }
-
     }
 );
 
@@ -64,6 +63,3 @@ const copySelectionAndHyperlink = async (request) => {
         showToast("Couldn't copy");
     }
 }
-
-
-// <a href="https://www.flaticon.com/free-icons/copy-link" title="copy link icons">Copy link icons created by Freepik - Flaticon</a>
