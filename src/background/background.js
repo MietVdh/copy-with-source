@@ -18,7 +18,7 @@ browser.runtime.onInstalled.addListener(() => {
     browser.contextMenus.create(
         {
             id: MENU_ITEMS.COPY_HYPERLINK,
-            title: "Copy with hyperlink",
+            title: "Copy with source",
             contexts: [CONTEXTS.ALL],
         }
     );
