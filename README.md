@@ -87,4 +87,4 @@ The build script creates separate Chrome and Firefox builds in `dist/`.
 - Build the `/dist` folder that contains the bundled code
 
 ## Credits
-[Copy with source icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/copy-link)
+[Copy link icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/copy-link)

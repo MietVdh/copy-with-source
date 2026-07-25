@@ -8,6 +8,15 @@
           "./background.js"
         ]
         },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "copy-with-source@example.com",
+        "data_collection_permissions": {
+          "required": ["none"]
+        },
+        "strict_min_version": "109.0"
+      }
+    },
     "permissions": [
         "contextMenus",
         "storage",
@@ -41,11 +50,5 @@
             },
           "description": "Copy the selected text with hyperlink"
         }
-      },
-    "browser_specific_settings": {
-      "gecko": {
-        "id": "foxy.precision590@aleeas.com",
-        "strict_min_version": "42.0"
       }
-    }
 }
